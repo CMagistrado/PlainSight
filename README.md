@@ -13,6 +13,7 @@ We had all the incoming txs send to AWS's Simple Queue Service, which allowed ou
 ## Getting Started
 
 Warning. MANY MeeSeeks died in the making of this, but all of them have lived a purposeful life.
+Make changes to the parts where they interact with AWS, and make the, interact to yours
 
 ### Prerequisites
 * BitCore
@@ -23,50 +24,20 @@ Warning. MANY MeeSeeks died in the making of this, but all of them have lived a 
 * json
 
 ```
-Give examples
+python MeeSeekBox.py
 ```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
 ```
-Give the example
+git clone https://github.com/CMagistrado/PlainSight.git
 ```
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+There have been a few bugs in MeeSeekBox that happens and dies from time to time.
+Be sure not to use this in production without testing this, or setting up an alert if it crashes.
 
 ## Authors
 
