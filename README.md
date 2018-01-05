@@ -2,17 +2,25 @@
 
 After the discovery of a paper online which describes how some bitcoin private keys are generated, we went on the treasure hunt to see if we could find addresses that had money still in them. We used AWS to build, and auto-deploy MeeSeeks, that would take any transaction that is added to the Bitcoin Blockchain, strip it for the BTC address, and use that address to generate a private key. We stopped after converting about 2 Million addresses, and concluded that whomever HAD been creating Bitcoin Addresses in this manner, is not currently using this poorly implemented method to derive private keys.
 
+## Our Setup
+* 1 m5.4xlarge EC2 Instance for BitCore
+* 2 t2.xlarge EC2 Instances for MeeSeeks
+* 3 Simple Queue Services for tx, spent, money queues
+* 2 DynamoDB Servers
+
+We had all the incoming txs send to AWS's Simple Queue Service, which allowed our MeeSeeks to grab an item (address) from the queue, lookup to see if it was already in our db. If so, die. Else, derive a key, and push that key to DynamoDB.
+
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Warning. MANY MeeSeeks died in the making of this, but all of them have lived a purposeful life.
 
 ### Prerequisites
-
-boto3 for interact with AWS
-requests
-multiprocessing
-time
-json
+* BitCore
+* boto3 for interact with AWS
+* requests
+* multiprocessing
+* time
+* json
 
 ```
 Give examples
@@ -59,20 +67,6 @@ Give an example
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
